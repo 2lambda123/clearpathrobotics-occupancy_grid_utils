@@ -124,7 +124,7 @@ public:
   }
 
 private:
-  void validate(const sm::LaserScan& info)
+  void validate(const sm::LaserScan& scanner_info, const gm::Pose& sensor_pose)
   {
     if (angle_min_ == info.angle_min && angle_max_ == info.angle_max &&
        range_max_ == info.range_max && angle_increment_ == info.angle_increment)
@@ -134,7 +134,7 @@ private:
     else createPoints(info);
   }
 
-  void transform(const gm::Pose& sensor_pose)
+  void transform(const gm::Pose& sensor_pose, std::vector<gm::Point>& points)
   {
     tf::Transform pose;
     tf::poseMsgToTF(sensor_pose, pose);
@@ -176,8 +176,7 @@ private:
   double angle_increment_;
 };
 
-sm::LaserScan::Ptr
-simulateRangeScan (const nm::OccupancyGrid& grid, const gm::Pose& sensor_pose,
+sm::LaserScan simulateRangeScan(const nm::OccupancyGrid& grid, const gm::Pose& sensor_pose, const sm::LaserScan& scanner_info, const bool unknown_obstacles) (const nm::OccupancyGrid& grid, const gm::Pose& sensor_pose,
                    const sm::LaserScan& scanner_info, const bool unknown_obstacles)
 {
   sm::LaserScan::Ptr result(new sm::LaserScan(scanner_info));

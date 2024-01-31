@@ -40,7 +40,7 @@ namespace occupancy_grid_utils
 using boost::format;
 
 /// Base class for exceptions from this package
-struct GridUtilsException: public std::logic_error
+struct GridUtilsException: public std::runtime_error
 {
   GridUtilsException (const format& f) : std::logic_error(f.str()) {};
   GridUtilsException (const char* str) : std::logic_error(str) {};
