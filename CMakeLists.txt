@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.0.2)
 project(occupancy_grid_utils)
 
 ## Find catkin macros and libraries
@@ -12,7 +12,7 @@ find_package(
 
 ## Add find-modules and define external dependencies
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
-find_package(Boost REQUIRED COMPONENTS system signals python)
+find_package(Boost REQUIRED COMPONENTS system python)
 find_package(Eigen3 REQUIRED)
 find_package(PythonLibs REQUIRED)
 find_package(Bullet REQUIRED)
